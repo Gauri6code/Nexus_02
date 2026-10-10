@@ -3,9 +3,9 @@ WORKDIR /app
 COPY pom.xml .
 COPY .mvn .mvn
 COPY mvnw mvnw.cmd ./
-RUN ./mvnw dependency:go-offline -B
+RUN sh mvnw dependency:go-offline -B
 COPY src ./src
-RUN ./mvnw clean package -DskipTests
+RUN sh mvnw package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
